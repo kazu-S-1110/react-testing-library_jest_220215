@@ -4,3 +4,5 @@
 
 使う技術は ReduxToolkit と React Testing Library, Jest,
 API モック手法
+
+[Role 対応サイト](https://github.com/A11yance/aria-query#elements-to-roles)
