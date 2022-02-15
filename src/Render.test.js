@@ -13,5 +13,9 @@ describe('Rendering', () => {
     // 複数あるときはgetAllByRole("Role")[N]でテストする
     expect(screen.getAllByRole('button')[0]).toBeTruthy();
     expect(screen.getAllByRole('button')[1]).toBeTruthy();
+    // screen.debug(screen.getByText('Udemy'));
+    expect(screen.getByText('Udemy')).toBeTruthy();
+    // 無い事を確認するならtoBeNull,getByTextではNullを返さないのでqueryByを使う
+    expect(screen.queryByText('Udeeeemy')).toBeNull();
   });
 });
