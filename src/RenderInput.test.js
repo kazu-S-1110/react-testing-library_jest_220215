@@ -20,3 +20,21 @@ describe('Input form onChange event', () => {
     expect(inputValue.value).toBe('test');
   });
 });
+
+describe('Console button conditionally triggered', () => {
+  it('should not trigger output function', () => {
+    const outputConsole = jest.fn(); //本来RenderInputに渡ってくるPropsをモック化する
+    render(<RenderInput outputConsole={outputConsole} />);
+    userEvent.click(screen.getByRole('button'));
+    expect(outputConsole).not.toHaveBeenCalled(); //inputに値がない状態で呼び出されないことを評価
+  });
+
+  it('should trigger output function', () => {
+    const outputConsole = jest.fn();
+    render(<RenderInput outputConsole={outputConsole} />);
+    const inputValue = screen.getByPlaceholderText('Enter');
+    userEvent.type(inputValue, 'test');
+    userEvent.click(screen.getByRole('button'));
+    expect(outputConsole).toHaveBeenCalledTimes(1);
+  });
+});
