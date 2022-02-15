@@ -17,5 +17,7 @@ describe('Rendering', () => {
     expect(screen.getByText('Udemy')).toBeTruthy();
     // 無い事を確認するならtoBeNull,getByTextではNullを返さないのでqueryByを使う
     expect(screen.queryByText('Udeeeemy')).toBeNull();
+
+    expect(screen.getByTestId('copyright')).toBeTruthy(); //testidを任意に付与して取得する
   });
 });
