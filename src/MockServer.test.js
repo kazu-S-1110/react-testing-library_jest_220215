@@ -29,4 +29,22 @@ describe('Mocking API', () => {
     expect(await screen.findByText('Bred dummy')).toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('disabled');
   });
+
+  it('[Fetch failure]should display error msg, no render heading and button enabled', async () => {
+    server.use(
+      rest.get(
+        'https://jsonplaceholder.typicode.com/users/1',
+        (req, res, ctx) => {
+          return res(ctx.status(404));
+        }
+      )
+    );
+    render(<MockServer />);
+    userEvent.click(screen.getByRole('button'));
+    expect(await screen.findByTestId('error')).toHaveTextContent(
+      'Fetching Failed !'
+    );
+    expect(screen.queryByRole('heading')).toBeNull();
+    expect(screen.getByRole('button')).not.toHaveAttribute('disabled');
+  });
 });
