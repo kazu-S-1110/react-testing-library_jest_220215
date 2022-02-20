@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './counterAPI';
 import axios from 'axios';
 
 const sleep = (msec) => {
@@ -24,14 +23,14 @@ const initialState = {
   username: '',
 };
 
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
+// export const incrementAsync = createAsyncThunk(
+//   'counter/fetchCount',
+//   async (amount) => {
+//     const response = await fetchCount(amount);
+//     // The value we return becomes the `fulfilled` action payload
+//     return response.data;
+//   }
+// );
 
 export const customCounterSlice = createSlice({
   name: 'customCounter',
