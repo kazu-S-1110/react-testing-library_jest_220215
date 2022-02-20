@@ -6,6 +6,7 @@ import RenderInput from './RenderInput';
 import FrameworkList from './FrameworkList';
 import UseEffectRender from './UseEffectRender';
 import MockServer from './MockServer';
+import Redux from './Redux';
 
 function App() {
   const data = [
@@ -43,6 +44,7 @@ function App() {
         <FrameworkList frameworks={data} />
         {/* <UseEffectRender /> */}
         <MockServer />
+        <Redux />
       </header>
     </div>
   );
